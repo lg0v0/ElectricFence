@@ -196,8 +196,8 @@ $(function() {
 		map.remove(marker);
 		$.ajax({
 			type: "get",
-			url: "Exit",
-			success:function(data){}
+			url: "Exit"
 		});
+		alert("已注销");
     });
 });

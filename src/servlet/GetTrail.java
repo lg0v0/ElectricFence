@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +39,10 @@ public class GetTrail extends HttpServlet {
 		GetInfo getinfo = new GetInfo();
 		username = (String) session.getAttribute("username");
 		token = (String) session.getAttribute("token");
-		result = getinfo.getTrail(username, token, "2017-08-25", "2017-09-26");
+		
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		date.format(new Date());
+		result = getinfo.getTrail(username, token,date.format(new Date().getTime()-1728000000).toString(), date.format(new Date()).toString());
 		response.getWriter().print(result);
 	}
 

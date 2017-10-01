@@ -23,10 +23,12 @@ public class Task extends TimerTask {
 		System.out.println(tokenfile.token);
 		System.out.println(getinfo.getResponseCode(tokenfile.token));
 		if(getinfo.getResponseCode(tokenfile.token)==200) {
-			Point point = getinfo.getPoint(tokenfile.username, tokenfile.token);
+			//Point point = getinfo.getPoint(tokenfile.username, tokenfile.token);
+			Point point = new Point(113.147009,29.329601);
 			IsPointInPolygon is = new IsPointInPolygon();
+			System.out.println(is.run(point));
 			if(is.run(point)=="out") {
-				MailUtil.sendMail("lg1009724327@163.com");
+				MailUtil.sendMail("1303383420@qq.com");
 			}
 			
 		}

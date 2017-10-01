@@ -58,9 +58,9 @@ public class MailUtil {
             //Message.RecipientType.BCC
 
             //标题
-            message.setSubject("提醒");
+            message.setSubject("设备已超出指定范围！");
             //设置邮件内容
-            message.setContent("设备已超出规定范围！", "text/html;charset=UTF-8");
+            message.setContent("设备已超出指定范围！", "text/html;charset=UTF-8");
             //发送
             Transport.send(message);
         } catch (AddressException e) {
@@ -74,8 +74,8 @@ public class MailUtil {
     }
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         sendMail("lg1009724327@163.com");
         System.out.println("成功！.......");
-    }
+    }*/
 }

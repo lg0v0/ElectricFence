@@ -43,7 +43,8 @@ public class PageLoad extends HttpServlet {
 		else {
 			username = (String) session.getAttribute("username");
 			token = (String) session.getAttribute("token");
-			Point point = getinfo.getPoint(username, token);
+			//Point point = getinfo.getPoint(username, token);
+			Point point = new Point(113.147009,29.329601);
 			IsPointInPolygon is = new IsPointInPolygon();
 			result = "{'result':'"+is.run(point)+"','lng':'"+point.lng+"','lat':'"+point.lat+"'}";
 			response.getWriter().print(result);
