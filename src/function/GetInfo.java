@@ -12,28 +12,42 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 从api服务器获取各种信息
+ * @author root
+ *
+ */
 public class GetInfo {
 	private final OkHttpClient client = new OkHttpClient();
 	String url="http://capi.gpslink.cn";
-	
-	//验证Token是否有效
-		public int getResponseCode(String Authorization) {
-			Request request = new Request.Builder()
-				      .url(url+"/api/Users")
-				      .header("Accept", "application/json")
-				      .header("Authorization", Authorization)
-				      .build();
-			try {
-				Response response = client.newCall(request).execute();
-				return response.code();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return 0;
+
+	/**
+	 * 验证Token是否有效
+	 * @param Authorization 令牌
+	 * @return 向api服务器发送验证请求，返回的代码
+	 */
+	public int getResponseCode(String Authorization) {
+		Request request = new Request.Builder()
+			      .url(url+"/api/Users")
+			      .header("Accept", "application/json")
+			      .header("Authorization", Authorization)
+			      .build();
+		try {
+			Response response = client.newCall(request).execute();
+			return response.code();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
-	//获取Token的函数，返回Token的字符串
+		return 0;
+	}
+
+	/**
+	 * 获取Token的函数
+	 * @param username 设备号
+	 * @param password 密码
+	 * @return 返回Token的字符串
+	 */
 	public String getToken(String username,String password,String grant_type,String scope) {
 		String str="",file="";
 		SaveToken savetoken = new SaveToken();
@@ -65,7 +79,12 @@ public class GetInfo {
 		return str;
 	}
 	
-	//获取坐标的函数，返回坐标MapPoints对象
+	/**
+	 * 获取坐标的函数
+	 * @param cid 设备号
+	 * @param Authorization 令牌
+	 * @return 返回坐标MapPoints对象
+	 */
 	public Point getPoint(String cid,String Authorization) {
 		final Gson gson = new Gson();
 		Point point = null;
@@ -85,8 +104,15 @@ public class GetInfo {
 		}
 		return point;
 	}
-	
-	//获取历史轨迹
+
+	/**
+	 * 获取历史轨迹
+	 * @param cid 设备号
+	 * @param Authorization 令牌
+	 * @param beg 开始i时间
+	 * @param end 结束时间
+	 * @return 历史轨迹
+	 */
 	public String getTrail(String cid,String Authorization,String beg,String end) {
 		final Gson gson = new Gson();
 		Request request = new Request.Builder()

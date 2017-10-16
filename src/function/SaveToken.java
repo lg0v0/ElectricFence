@@ -6,7 +6,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
+/**
+ * 将Token写入文件，以便后台持续运行时获取。分别定义了读和写两个方法
+ * @author root
+ *
+ */
 public class SaveToken {
+	/**
+	 * 将Token写入文件
+	 * @param Token
+	 */
 	public void WriteStringToFile(String Token) {  
         try {
             PrintStream ps = new PrintStream(new FileOutputStream("Token.txt"));  
@@ -18,6 +27,10 @@ public class SaveToken {
         }
     }
 	
+	/**
+	 * 从文件读取内容
+	 * @return 文件的内容
+	 */
 	public String readString(){
 	    String str="";
 	    try {

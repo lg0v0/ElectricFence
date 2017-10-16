@@ -1,5 +1,10 @@
 package info;
 
+/**
+ * 用于描述点，lng为经度，lat为纬度
+ * @author root
+ *
+ */
 public class Point {
 	public double lng;
 	public double lat;

@@ -2,9 +2,18 @@ package function;
 
 import info.Point;
 
+/**
+ * 判断点与多边形的位置关系的类
+ * @author root
+ *
+ */
 public class IsPointInPolygon {
 	
-	
+	/**
+	 * 判断点与多边形的位置关系的方法
+	 * @param point 要判断的点
+	 * @return 返回点与多边形的位置关系
+	 */
 	public String run(Point point) {
 		boolean flag=false;
 		Point []  points = new Point[4];
